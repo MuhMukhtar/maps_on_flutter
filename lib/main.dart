@@ -19,17 +19,14 @@ class _MyAppState extends State<MyApp> {
     final googleOffices = await locations.getGoogleOffices();
     setState(() {
       _markers.clear();
-      for (final office in googleOffices.offices) {
-        final marker = Marker(
-          markerId: MarkerId(office.name),
-          position: LatLng(office.lat, office.lng),
-          infoWindow: InfoWindow(
-            title: office.name,
-            snippet: office.address,
-          ),
-        );
-        _markers[office.name] = marker;
-      }
+      const marker = Marker(
+        markerId: MarkerId("Home"),
+        position: LatLng(-8.660700, 115.199754),
+        infoWindow: InfoWindow(
+          title: "Rumah Muhammad Mukhtar",
+        ),
+      );
+      _markers["Home"] = marker;
     });
   }
 
@@ -44,7 +41,7 @@ class _MyAppState extends State<MyApp> {
         body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: const CameraPosition(
-            target: LatLng(0, 0),
+            target: LatLng(-7.651342, 112.920699),
             zoom: 2,
           ),
           markers: _markers.values.toSet(),
